@@ -20,7 +20,7 @@ func readStringsToArray() ([]string, error) {
 
 // arrayTo3CharStringsArray
 func arrayTo3CharStringsArray(a []string) []string {
-	var r []string
+	var r = []string{}
 	for _, v := range a {
 		if len([]rune(v)) < 4 {
 			r = append(r, v)
