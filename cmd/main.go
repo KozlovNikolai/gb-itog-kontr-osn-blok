@@ -7,21 +7,36 @@ import (
 	"github.com/KozlovNikolai/gb-itog-kontr-osn-blok/internal/app"
 )
 
-var dataFile = "./initial-array"
+var dataFile = "./listing"
 
-func main() {
-	if err := run(); err != nil {
-		log.Fatal(err)
+// readStringsToArray reads string to array
+func readStringsToArray() ([]string, error) {
+	s, err := app.GetDataFromFile(&dataFile)
+	if err != nil {
+		return nil, fmt.Errorf("ошибка получения данных из файла: %w", err)
 	}
+	return s, nil
 }
 
-func run() error {
+// arrayTo3CharStringsArray
+func arrayTo3CharStringsArray(a []string) []string {
+	var r []string
+	for _, v := range a {
+		if len([]rune(v)) < 4 {
+			r = append(r, v)
+		}
+	}
+	return r
+}
+
+func main() {
 	fmt.Println("Start")
 
-	s, err := app.GetData(&dataFile)
+	s, err := readStringsToArray()
 	if err != nil {
-		return fmt.Errorf("run() %w", err)
+		log.Fatal(err)
 	}
-	fmt.Println(s)
-	return nil
+	fmt.Printf("Исходный массив строк: \n%q\n", s)
+	s3 := arrayTo3CharStringsArray(s)
+	fmt.Printf("\nМассив строк с длинной не больше 3ех символов: \n%q\n", s3)
 }
