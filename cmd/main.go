@@ -7,7 +7,7 @@ import (
 	"github.com/KozlovNikolai/gb-itog-kontr-osn-blok/internal/app"
 )
 
-const dataFile = "initial-array"
+var dataFile = "./initial-array"
 
 func main() {
 	if err := run(); err != nil {
@@ -18,7 +18,7 @@ func main() {
 func run() error {
 	fmt.Println("Start")
 
-	s, err := app.GetData(dataFile)
+	s, err := app.GetData(&dataFile)
 	if err != nil {
 		return fmt.Errorf("run() %w", err)
 	}

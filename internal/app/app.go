@@ -7,10 +7,11 @@ import (
 	"os"
 )
 
-var s []string = []string{""}
+var s []string
 
-func GetData(dataFile string) ([]string, error) {
-	file, err := os.Open(dataFile)
+// GetData getting slice of string from file
+func GetData(dataFile *string) ([]string, error) {
+	file, err := os.Open(*dataFile)
 	if err != nil {
 		return s, fmt.Errorf("ошибка открытия файла: %w", err)
 	}
