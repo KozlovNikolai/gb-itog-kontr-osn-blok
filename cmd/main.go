@@ -32,11 +32,11 @@ func arrayTo3CharStringsArray(a []string) []string {
 func main() {
 	fmt.Println("Start")
 
-	s, err := readStringsToArray()
+	a, err := readStringsToArray()
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Исходный массив строк: \n%q\n", s)
-	s3 := arrayTo3CharStringsArray(s)
+	fmt.Printf("Исходный массив строк: \n%q\n", a)
+	s3 := arrayTo3CharStringsArray(a)
 	fmt.Printf("\nМассив строк с длинной не больше 3ех символов: \n%q\n", s3)
 }
